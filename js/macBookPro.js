@@ -1,32 +1,34 @@
+function updateBalance() {}
+
 //memory
 document.getElementById('unified-memory16').addEventListener('click', function () {
     const memoryCostText = document.getElementById('memory-cost');
     const memoryCost = memoryCostText.innerText;
-    memoryCostText.innerText = parseFloat(memoryCost) + 180;
+    memoryCostText.innerText = '180';
 });
 document.getElementById('unified-memory8').addEventListener('click', function () {
     const memoryCostText = document.getElementById('memory-cost');
     const memoryCost = memoryCostText.innerText;
-    memoryCostText.innerText = parseFloat(memoryCost) * 0;
+    memoryCostText.innerText = '0';
 });
 
 //Storage
 document.getElementById('storage-512gb').addEventListener('click', function () {
     const storageCostText = document.getElementById('storage-cost');
     const storageCost = storageCostText.innerText;
-    storageCostText.innerText = parseFloat(storageCost) + 100;
+    storageCostText.innerText = '100';
 });
 
 document.getElementById('storage-1tb').addEventListener('click', function () {
     const storageCostText = document.getElementById('storage-cost');
     const storageCost = storageCostText.innerText;
-    storageCostText.innerText = parseFloat(storageCost) + 180;
+    storageCostText.innerText = '180';
 });
 
 document.getElementById('storage-256gb').addEventListener('click', function () {
     const storageCostText = document.getElementById('storage-cost');
     const storageCost = storageCostText.innerText;
-    storageCostText.innerText = parseFloat(storageCost) * 0;
+    storageCostText.innerText = '0';
 });
 
 //delivery option
@@ -34,13 +36,13 @@ document.getElementById('storage-256gb').addEventListener('click', function () {
 document.getElementById('delivery-aug21').addEventListener('click', function () {
     const deliveryChargeText = document.getElementById('delivery-charge');
     const deliveryCharge = deliveryChargeText.innerText;
-    deliveryChargeText.innerText = parseFloat(deliveryCharge) + 20;
+    deliveryChargeText.innerText = '20';
 });
 
 document.getElementById('delivery-aug25').addEventListener('click', function () {
     const deliveryChargeText = document.getElementById('delivery-charge');
     const deliveryCharge = deliveryChargeText.innerText;
-    deliveryChargeText.innerText = parseFloat(deliveryCharge) * 0;
+    deliveryChargeText.innerText = '0';
 });
 
 //total
