@@ -4,3 +4,18 @@ html,
 body {
     font-family: 'Poppins', sans-serif;
 }
+.promo {
+    color: #5353ac;
+}
+.doller {
+    color: #6666ff;
+}
+.total {
+    color: #4040bf;
+}
+.total-amount {
+    color: #0000cc;
+}
+#total-amount {
+    color: #0000cc;
+}
