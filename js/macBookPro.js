@@ -1,92 +1,84 @@
-//update Memory Cost
+// getting all by id
 
-function updateMemoryCost(is16gb) {
-    const memoryCostText = document.getElementById('memory-cost');
-    const memoryCost = memoryCostText.innerText;
-    const memoryCostAmount = parseInt(memoryCostText.innerText);
-    if (is16gb) {
-        memoryCostText.innerText = '180';
-    } else {
-        memoryCostText.innerText = '0';
-    }
-}
+const totalmemoryCost = document.getElementById('memory-cost');
+const totalstorageCost = document.getElementById('storage-cost');
+const totaldeliveryCost = document.getElementById('delivery-charge');
+const totalPrice = document.getElementById('total-price');
+const macPrice = document.getElementById('best-price');
+const promoInput = document.getElementById('promoCode');
+const promoDiscountPriceText = document.getElementById('total-amount');
 
-//update Storage Cost
-
-function updateStorageCost(is512SSD, is1tbSSD) {
-    const storageCostText = document.getElementById('storage-cost');
-    const storageCost = storageCostText.innerText;
-    const storageCostAmount = parseInt(storageCostText);
-    if (is512SSD) {
-        storageCostText.innerText = '100';
-    } else if (is512SSD === false) {
-        storageCostText.innerText = '180';
-    } else {
-        storageCostText.innerText = '0';
-    }
-}
-
-//update Delivery Cost
-function updateDeliveryCost(isAug21) {
-    const deliveryChargeText = document.getElementById('delivery-charge');
-    const deliveryCharge = deliveryChargeText.innerText;
-    const deliveryChargeAmount = parseInt(deliveryChargeText);
-    if (isAug21) {
-        deliveryChargeText.innerText = '20';
-    } else {
-        deliveryChargeText.innerText = '0';
-    }
-}
-
-//memory
-
-document.getElementById('unified-memory16').addEventListener('click', function () {
-    updateMemoryCost(true);
-});
+// 8GB Memory
 document.getElementById('unified-memory8').addEventListener('click', function () {
-    updateMemoryCost(false);
+    totalmemoryCost.innerText = '0';
+    updateAll();
 });
-
-//Storage
-document.getElementById('storage-512gb').addEventListener('click', function () {
-    updateStorageCost(true);
+// 16 GB Memory
+document.getElementById('unified-memory16').addEventListener('click', function () {
+    totalmemoryCost.innerText = '180';
+    updateAll();
 });
+//   total memory end
 
-document.getElementById('storage-1tb').addEventListener('click', function () {
-    updateStorageCost(false);
-});
+// total storage cost start
 
+// 256 GB SSD
 document.getElementById('storage-256gb').addEventListener('click', function () {
-    updateStorageCost();
+    totalstorageCost.innerText = '0';
+    updateAll();
 });
 
-//delivery option
-
-document.getElementById('delivery-aug21').addEventListener('click', function () {
-    updateDeliveryCost(true);
+// 512 GB SSD
+document.getElementById('storage-512gb').addEventListener('click', function () {
+    totalstorageCost.innerText = '100';
+    updateAll();
 });
 
+// 1TB SSD
+document.getElementById('storage-1tb').addEventListener('click', function () {
+    totalstorageCost.innerText = '180';
+    updateAll();
+});
+// total storage end
+
+//total delivery cost start
+
+// free delivery
 document.getElementById('delivery-aug25').addEventListener('click', function () {
-    updateDeliveryCost(false);
+    totaldeliveryCost.innerText = '0';
+    updateAll();
 });
 
-//total calculate
+// paid delivery of 20
+document.getElementById('delivery-aug21').addEventListener('click', function () {
+    totaldeliveryCost.innerText = '20';
+    updateAll();
+});
+//total delivery cost end
 
-function updateTotal() {
-    const total = document.getElementById('total-price');
-    const memoryCostAmount = parseInt(memoryCostText.innerText);
-    const storageCostAmount = parseInt(storageCostText);
-    const deliveryChargeAmount = parseInt(deliveryChargeText);
-    const grandTotal = memoryCostAmount + storageCostAmount + deliveryChargeAmount;
+// apply promo and get discount
+document.getElementById('applyPromo').addEventListener('click', function () {
+    discountOffer();
+});
 
-    total.innerText = grandTotal;
+// update function
+function updateAll() {
+    const bestPrice = Number(macPrice.innerText);
+    const extraMemoryCost = Number(totalmemoryCost.innerText);
+    const extraStorageCost = Number(totalstorageCost.innerText);
+    const extraDeliveryCost = Number(totaldeliveryCost.innerText);
+    const finalTotalPrice = bestPrice + extraMemoryCost + extraStorageCost + extraDeliveryCost;
+    totalPrice.innerText = finalTotalPrice;
+    promoDiscountPriceText.innerText = totalPrice.innerText;
 }
 
-//total
-// const total = document.getElementById('total-price');
+// promo code apply function
+function discountOffer() {
+    let discountPrice = Number(promoDiscountPriceText.innerText);
+    promoCode = promoInput.value;
+    if (promoCode == 'stevekaku') {
+        promoDiscountPriceText.innerText = (totalPrice.innerText / 100) * 80;
+    }
 
-// const previousTotalText = totalPrice.innerText;
-// const previousTotalPrice = parseInt(previousTotalText);
-// const newTotalPrice = previousTotalPrice;
-
-// total.innerText = newTotalPrice;
+    promoInput.value = '';
+}
