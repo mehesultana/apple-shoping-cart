@@ -1,3 +1,5 @@
+//update Memory Cost
+
 function updateMemoryCost(is16gb) {
     const memoryCostText = document.getElementById('memory-cost');
     const memoryCost = memoryCostText.innerText;
@@ -11,59 +13,70 @@ function updateMemoryCost(is16gb) {
     }
 }
 
+//update Storage Cost
+
+function updateStorageCost(is512SSD, is1tbSSD) {
+    const storageCostText = document.getElementById('storage-cost');
+    const storageCost = storageCostText.innerText;
+    storageCostText.innerText = '100';
+    const storageCostAmount = parseInt(storageCostText);
+
+    if (is512SSD) {
+        storageCostText.innerText = '100';
+        const storageCostAmount = parseInt(storageCostText);
+    } else if (is512SSD === false) {
+        storageCostText.innerText = '180';
+        const storageCostAmount = parseInt(storageCostText);
+    } else {
+        storageCostText.innerText = '0';
+        const storageCostAmount = parseInt(storageCostText);
+    }
+}
+
+//update Delivery Cost
+function updateDeliveryCost(isAug21) {
+    const deliveryChargeText = document.getElementById('delivery-charge');
+    const deliveryCharge = deliveryChargeText.innerText;
+
+    if (isAug21) {
+        deliveryChargeText.innerText = '20';
+        const deliveryChargeAmount = parseInt(deliveryChargeText);
+    } else {
+        deliveryChargeText.innerText = '0';
+        const deliveryChargeAmount = parseInt(deliveryChargeText);
+    }
+}
+
 //memory
 
 document.getElementById('unified-memory16').addEventListener('click', function () {
-    // const memoryCostText = document.getElementById('memory-cost');
-    // const memoryCost = memoryCostText.innerText;
-    // memoryCostText.innerText = '180';
-    // const memoryCostAmount = parseInt(memoryCostText);
     updateMemoryCost(true);
 });
 document.getElementById('unified-memory8').addEventListener('click', function () {
-    // const memoryCostText = document.getElementById('memory-cost');
-    // const memoryCost = memoryCostText.innerText;
-    // memoryCostText.innerText = '0';
-    // const memoryCostAmount = parseInt(memoryCostText);
     updateMemoryCost(false);
 });
 
 //Storage
 document.getElementById('storage-512gb').addEventListener('click', function () {
-    const storageCostText = document.getElementById('storage-cost');
-    const storageCost = storageCostText.innerText;
-    storageCostText.innerText = '100';
-    const storageCostAmount = parseInt(storageCostText);
+    updateStorageCost(true);
 });
 
 document.getElementById('storage-1tb').addEventListener('click', function () {
-    const storageCostText = document.getElementById('storage-cost');
-    const storageCost = storageCostText.innerText;
-    storageCostText.innerText = '180';
-    const storageCostAmount = parseInt(storageCostText);
+    updateStorageCost(false);
 });
 
 document.getElementById('storage-256gb').addEventListener('click', function () {
-    const storageCostText = document.getElementById('storage-cost');
-    const storageCost = storageCostText.innerText;
-    storageCostText.innerText = '0';
-    const storageCostAmount = parseInt(storageCostText);
+    updateStorageCost();
 });
 
 //delivery option
 
 document.getElementById('delivery-aug21').addEventListener('click', function () {
-    const deliveryChargeText = document.getElementById('delivery-charge');
-    const deliveryCharge = deliveryChargeText.innerText;
-    deliveryChargeText.innerText = '20';
-    const deliveryChargeAmount = parseInt(deliveryChargeText);
+    updateDeliveryCost(true);
 });
 
 document.getElementById('delivery-aug25').addEventListener('click', function () {
-    const deliveryChargeText = document.getElementById('delivery-charge');
-    const deliveryCharge = deliveryChargeText.innerText;
-    deliveryChargeText.innerText = '0';
-    const deliveryChargeAmount = parseInt(deliveryChargeText);
+    updateDeliveryCost(false);
 });
 
 //total
