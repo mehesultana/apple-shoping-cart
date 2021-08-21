@@ -3,13 +3,11 @@
 function updateMemoryCost(is16gb) {
     const memoryCostText = document.getElementById('memory-cost');
     const memoryCost = memoryCostText.innerText;
-
+    const memoryCostAmount = parseInt(memoryCostText.innerText);
     if (is16gb) {
         memoryCostText.innerText = '180';
-        const memoryCostAmount = parseInt(memoryCostText);
     } else {
         memoryCostText.innerText = '0';
-        const memoryCostAmount = parseInt(memoryCostText);
     }
 }
 
@@ -18,18 +16,13 @@ function updateMemoryCost(is16gb) {
 function updateStorageCost(is512SSD, is1tbSSD) {
     const storageCostText = document.getElementById('storage-cost');
     const storageCost = storageCostText.innerText;
-    storageCostText.innerText = '100';
     const storageCostAmount = parseInt(storageCostText);
-
     if (is512SSD) {
         storageCostText.innerText = '100';
-        const storageCostAmount = parseInt(storageCostText);
     } else if (is512SSD === false) {
         storageCostText.innerText = '180';
-        const storageCostAmount = parseInt(storageCostText);
     } else {
         storageCostText.innerText = '0';
-        const storageCostAmount = parseInt(storageCostText);
     }
 }
 
@@ -37,13 +30,11 @@ function updateStorageCost(is512SSD, is1tbSSD) {
 function updateDeliveryCost(isAug21) {
     const deliveryChargeText = document.getElementById('delivery-charge');
     const deliveryCharge = deliveryChargeText.innerText;
-
+    const deliveryChargeAmount = parseInt(deliveryChargeText);
     if (isAug21) {
         deliveryChargeText.innerText = '20';
-        const deliveryChargeAmount = parseInt(deliveryChargeText);
     } else {
         deliveryChargeText.innerText = '0';
-        const deliveryChargeAmount = parseInt(deliveryChargeText);
     }
 }
 
@@ -79,8 +70,21 @@ document.getElementById('delivery-aug25').addEventListener('click', function () 
     updateDeliveryCost(false);
 });
 
+//total calculate
+
+function updateTotal() {
+    const total = document.getElementById('total-price');
+    const memoryCostAmount = parseInt(memoryCostText.innerText);
+    const storageCostAmount = parseInt(storageCostText);
+    const deliveryChargeAmount = parseInt(deliveryChargeText);
+    const grandTotal = memoryCostAmount + storageCostAmount + deliveryChargeAmount;
+
+    total.innerText = grandTotal;
+}
+
 //total
 // const total = document.getElementById('total-price');
+
 // const previousTotalText = totalPrice.innerText;
 // const previousTotalPrice = parseInt(previousTotalText);
 // const newTotalPrice = previousTotalPrice;
