@@ -63,10 +63,10 @@ document.getElementById('applyPromo').addEventListener('click', function () {
 
 // update function
 function updateAll() {
-    const bestPrice = Number(macPrice.innerText);
-    const extraMemoryCost = Number(totalmemoryCost.innerText);
-    const extraStorageCost = Number(totalstorageCost.innerText);
-    const extraDeliveryCost = Number(totaldeliveryCost.innerText);
+    const bestPrice = parseFloat(macPrice.innerText);
+    const extraMemoryCost = parseFloat(totalmemoryCost.innerText);
+    const extraStorageCost = parseFloat(totalstorageCost.innerText);
+    const extraDeliveryCost = parseFloat(totaldeliveryCost.innerText);
     const finalTotalPrice = bestPrice + extraMemoryCost + extraStorageCost + extraDeliveryCost;
     totalPrice.innerText = finalTotalPrice;
     promoDiscountPriceText.innerText = totalPrice.innerText;
@@ -74,11 +74,12 @@ function updateAll() {
 
 // promo code apply function
 function discountOffer() {
-    let discountPrice = Number(promoDiscountPriceText.innerText);
+    let discountPrice = parseFloat(promoDiscountPriceText.innerText);
     promoCode = promoInput.value;
     if (promoCode == 'stevekaku') {
-        promoDiscountPriceText.innerText = (totalPrice.innerText / 100) * 80;
+        promoDiscountPriceText.innerText = ((totalPrice.innerText / 100) * 80).toFixed(2);
     }
 
     promoInput.value = '';
 }
+// console.log(total.toFixed(2));
